@@ -1,0 +1,473 @@
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #00d4ff;
+    --secondary-color: #7b2cbf;
+    --accent-color: #ff6b35;
+    --text-color: #e0e0e0;
+    --text-light: #a0a0a0;
+    --bg-dark: #0a0a1a;
+    --bg-card: rgba(20, 20, 40, 0.8);
+    --bg-card-hover: rgba(30, 30, 60, 0.9);
+    --border-color: rgba(0, 212, 255, 0.3);
+    --shadow-color: rgba(0, 212, 255, 0.2);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Animated Background - CSS Stars */
+.stars {
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 180px 20px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 200px 150px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 220px 60px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 250px 100px, #ddd, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 300px 200px;
+}
+
+.twinkling {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: 
+        radial-gradient(2px 2px at 75px 45px, #aaf, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 125px 95px, #aff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 175px 145px, #faf, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 225px 35px, #ffa, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 275px 85px, #aaf, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 350px 200px;
+    animation: move-twink-back 100s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes move-twink-back {
+    from { background-position: 0 0; }
+    to { background-position: -10000px 5000px; }
+}
+
+/* Header / Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, rgba(10, 10, 26, 0.9) 0%, transparent 100%);
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-weight: 300;
+}
+
+.tagline-en {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: var(--text-light);
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Navigation */
+.main-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.nav-link:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+/* News Section */
+.news-section {
+    margin-bottom: 80px;
+}
+
+.news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* News Card */
+.news-card {
+    display: flex;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.news-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateX(10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 40px var(--shadow-color);
+    background: var(--bg-card-hover);
+}
+
+.news-card:hover::before {
+    opacity: 1;
+}
+
+.news-card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    width: 100%;
+}
+
+/* News Thumbnail */
+.news-thumbnail {
+    flex-shrink: 0;
+    width: 250px;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.news-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-thumbnail img {
+    transform: scale(1.1);
+}
+
+/* Placeholder for images */
+.news-thumbnail .placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-dark) 100%);
+}
+
+/* News Content */
+.news-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.news-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.news-card:hover .news-title {
+    color: var(--primary-color);
+}
+
+.news-description {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-source {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* About Section */
+.about-section {
+    margin-bottom: 80px;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Contact Section */
+.contact-section {
+    margin-bottom: 60px;
+    text-align: center;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.contact-content p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.contact-email {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--primary-color);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 12px 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.contact-email:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 26, 0.95) 50%);
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.powered-by {
+    margin-top: 20px;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .news-card {
+        flex-direction: column;
+    }
+    
+    .news-thumbnail {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .main-nav {
+        gap: 15px;
+    }
+    
+    .nav-link {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+    
+    .about-section,
+    .contact-section {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 15px 30px;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .container {
+        padding: 30px 15px;
+    }
+    
+    .news-thumbnail {
+        height: 180px;
+    }
+    
+    .news-content {
+        padding: 15px;
+    }
+    
+    .news-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Loading Animation */
+.news-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation for news cards */
+.news-card:nth-child(1) { animation-delay: 0.1s; }
+.news-card:nth-child(2) { animation-delay: 0.2s; }
+.news-card:nth-child(3) { animation-delay: 0.3s; }
+.news-card:nth-child(4) { animation-delay: 0.4s; }
+.news-card:nth-child(5) { animation-delay: 0.5s; }
+.news-card:nth-child(6) { animation-delay: 0.6s; }
